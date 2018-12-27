@@ -1,0 +1,3 @@
+<!--pages/index/index.wxml-->
+<view>这是首页</view>
+<button bindtap="getData">点我拿数据</button>
