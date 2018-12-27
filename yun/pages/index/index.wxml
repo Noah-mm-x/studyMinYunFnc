@@ -6,3 +6,4 @@
 <view class="sum">两者之和是：{{sum}}</view>
 
 <button class="btn" bindtap="getData">点击计算两者之和</button>
+

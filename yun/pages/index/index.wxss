@@ -6,10 +6,13 @@
     border: 2rpx solid #eee;
 }
 .btn{
-    margin-top: 100rpx;
-    width: 360rpx;
-    font-size: 36rpx;
-    color: #fff;
-    line-height: 60rpx;
-    background: #abcdef;
+    margin-top: 40rpx;
+    width:380rpx;
+    height:92rpx;
+    background:linear-gradient(133deg,rgba(19,218,153,1) 0%,rgba(6,201,130,1) 100%);
+    border-radius:46rpx;
+    font-size:32rpx;    
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 92rpx;
 }
