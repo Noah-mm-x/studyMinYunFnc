@@ -1,3 +1,8 @@
 <!--pages/index/index.wxml-->
-<view>这是首页</view>
-<button bindtap="getData">点我拿数据</button>
+<view class="cal-wrap clearfix">
+    <input class="input" type="number" value="{{num1}}" bindinput="handleInput1"/>
+    <input class="input" type="number" value="{{num2}}" bindinput="handleInput2"/>
+</view>
+<view class="sum">两者之和是：{{sum}}</view>
+
+<button class="btn" bindtap="getData">点击计算两者之和</button>

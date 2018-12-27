@@ -1,1 +1,15 @@
 /* pages/index/index.wxss */
+.input{
+    float: left;
+    width: 100rpx;
+    height: 40rpx;
+    border: 2rpx solid #eee;
+}
+.btn{
+    margin-top: 100rpx;
+    width: 360rpx;
+    font-size: 36rpx;
+    color: #fff;
+    line-height: 60rpx;
+    background: #abcdef;
+}

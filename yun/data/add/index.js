@@ -7,7 +7,7 @@ cloud.init()
 exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext()
     const {userInfo,a,b} = event;
-    const sum = a + b;
+    const sum = parseInt(a) + parseInt(b);
     return {
         event,
         openid: wxContext.OPENID,
