@@ -1,10 +1,10 @@
 /* pages/index/index.wxss */
-.input{
+/* .input{
     float: left;
     width: 100rpx;
     height: 40rpx;
     border: 2rpx solid #eee;
-}
+} */
 .btn{
     margin-top: 40rpx;
     width:380rpx;
@@ -26,12 +26,11 @@
     color: #222222;
 }
 .info-title{
-    font-size: 32rpx;
+    font-size: 50rpx;
     color: #555555;
 }
-input{
-    width: 280rpx;
-    border: 2rpx solid #555555;
+.picker .val{
+    color: #333;
 }
 .picker .val text{
     color: coral;
@@ -41,4 +40,13 @@ input{
 }
 .userinfo-wrap text{
     color: coral;
+}
+.query-val-wrap .txt{
+    float: left;
+    color: #333;
+}
+.query-val-wrap .input{
+    float: left;
+    width: 280rpx;
+    border: 2rpx solid #555555;
 }

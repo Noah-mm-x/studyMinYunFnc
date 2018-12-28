@@ -11,9 +11,9 @@
 <picker class="picker" mode="selector" range="{{queryWayList}}" range-key="name" bindchange="handleTypePick">
     <view class='val'>查找方式：<text>{{currentWayObj.name}}</text></view>
 </picker>
-<view class=''>
-    查询的值：
-    <input type="text" bindinput="handleQueryInput"/>
+<view class="query-val-wrap clearfix">
+    <view class='txt'>查询的值：</view>
+    <input class="input" type="text" bindinput="handleQueryInput"/>
 </view>
 <view class='info-title'>信息如下:</view>
 <view class='userinfo-wrap' wx:for="{{userList}}" wx:key="{{index}}">
@@ -23,3 +23,5 @@
     <view>性别：<text>{{item.genre}}</text></view>
 </view>
 <button class="btn" bindtap="getData">获取用户数据</button>
+<view class="split-line">**************分割线**************</view>
+<view class=''></view>
