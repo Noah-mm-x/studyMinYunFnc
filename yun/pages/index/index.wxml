@@ -24,4 +24,17 @@
 </view>
 <button class="btn" bindtap="getData">获取用户数据</button>
 <view class="split-line">**************分割线**************</view>
-<view class=''></view>
+<view class='info-title'>插入数据：</view>
+<view class='input-wrap clearfix'>
+    <view class='name'>名字：</view>
+    <input class="input" type="text" value="{{name}}" data-name="name"  bindinput="handleInput" />
+</view>
+<view class='input-wrap clearfix'>
+    <view class='name'>年龄：</view>
+    <input class="input" type="text" value="{{age}}" data-name="age"  bindinput="handleInput"/>
+</view>
+<view class='input-wrap clearfix'>
+    <view class='name'>性别：</view>
+    <input class="input" type="text" value="{{genre}}" data-name="genre"  bindinput="handleInput"/>
+</view>
+<button class="btn" bindtap="addData">插入用户数据</button>

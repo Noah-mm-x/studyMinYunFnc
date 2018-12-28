@@ -50,3 +50,15 @@
     width: 280rpx;
     border: 2rpx solid #555555;
 }
+.input-wrap{
+    margin-top: 10rpx;
+}
+.input-wrap .name{
+    float: left;
+    color: #333;
+}
+.input-wrap .input{
+    float: left;
+    width: 280rpx;
+    border: 2rpx solid #555555;
+}

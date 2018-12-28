@@ -24,7 +24,10 @@ Page({
         },
         queryVal: "",
         resultList: [],
-        userList: []
+        userList: [],
+        name: '',
+        age: '',
+        genre: ''
     },
     onShow() {
         wx.cloud.init();
@@ -87,7 +90,6 @@ Page({
                         userList: res.result.data
                     });
                 }
-
                 console.log(111, res.result.data);
             },
             fail(err) {
@@ -118,5 +120,60 @@ Page({
         this.setData({
             queryVal: e.detail.value
         });
+    },
+    handleInput(e){
+        const type = e.currentTarget.dataset.name
+        this.setData({
+            [type]: e.detail.value
+        })
+    },
+    addData(){
+        const name = this.data.name;
+        const age = this.data.age;
+        const genre= this.data.genre;
+        if (!name) {
+            wx.showToast({
+                title: "名字不能为空",
+                icon: "none"
+            });
+            return false;
+        }
+        if (!age) {
+            wx.showToast({
+                title: "年龄不能为空",
+                icon: "none"
+            });
+            return false;
+        }
+        if (!genre) {
+            wx.showToast({
+                title: "性别不能为空",
+                icon: "none"
+            });
+            return false;
+        }
+        const self = this;
+        wx.showToast({
+            none: 'none',
+            title: "正在插入"
+        });
+        wx.cloud.callFunction({
+            name: "users",
+            data: {
+                name: name,
+                age: age,
+                genre: genre
+            },
+            success(res) {
+                console.log('res',res);
+                wx.showToast({
+                    none: 'none',
+                    title: "插入成功"
+                });
+            },
+            fail(err) {
+                console.log(err);
+            }
+        });
     }
-});
+}); 
