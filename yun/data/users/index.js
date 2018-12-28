@@ -29,6 +29,21 @@ exports.main = async (event, context) => {
 
     // 插入操作
     const {name,age,genre} = event;
+    if(!name){
+        return {
+            code: 0
+        }
+    }
+    if(!age){
+        return {
+            code: 0
+        }
+    }
+    if(!genre){
+        return {
+            code: 0
+        }
+    }
     try {
         return await db.collection("users").add({
             data:{
@@ -43,6 +58,7 @@ exports.main = async (event, context) => {
         console.log('err',err);
     }
     return {
+        code: 1,
         event,
     };
 };

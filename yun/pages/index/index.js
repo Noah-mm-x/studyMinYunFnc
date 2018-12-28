@@ -80,7 +80,7 @@ Page({
             },
             success(res) {
                 const data = res.result.data;
-                if (!data.length) {
+                if (!data || !data.length) {
                     wx.showToast({
                         none: 'none',
                         title: "暂无数据"
@@ -165,11 +165,17 @@ Page({
                 genre: genre
             },
             success(res) {
-                console.log('res',res);
-                wx.showToast({
-                    none: 'none',
-                    title: "插入成功"
-                });
+                if(res.code != 0){
+                    wx.showToast({
+                        none: 'none',
+                        title: "插入成功"
+                    });
+                }else{
+                    wx.showToast({
+                        none: 'none',
+                        title: "插入异常"
+                    });
+                }
             },
             fail(err) {
                 console.log(err);
