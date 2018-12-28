@@ -9,9 +9,11 @@ const db = cloud.database();
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+    const param = event.param;
+    const val = event.val;
     try {
         return await db.collection("users").where({
-            name: '张三',
+            [param]: val,
         }).get(res=>{
             console.log(111,res);
         }).catch(err=>{

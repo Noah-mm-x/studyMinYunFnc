@@ -22,6 +22,23 @@
     text-align: center;
 }
 .title{
-    font-size: 56rpx;
+    font-size: 48rpx;
     color: #222222;
+}
+.info-title{
+    font-size: 32rpx;
+    color: #555555;
+}
+input{
+    width: 280rpx;
+    border: 2rpx solid #555555;
+}
+.picker .val text{
+    color: coral;
+}
+.userinfo-wrap{
+    margin-top: 20rpx;
+}
+.userinfo-wrap text{
+    color: coral;
 }

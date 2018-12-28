@@ -1,13 +1,25 @@
-<!--pages/index/index.wxml-->
-<view class="title">计算两者之和：</view>
+<!-- <view class="title">计算两者之和：</view>
 <view class="cal-wrap clearfix">
     <input class="input" type="number" value="{{num1}}" bindinput="handleInput1"/>
     <input class="input" type="number" value="{{num2}}" bindinput="handleInput2"/>
 </view>
 <view class="sum">两者之和是：{{sum}}</view>
-
 <button class="btn" bindtap="handleCal">点击计算两者之和</button>
 
-<view class="split-line">**************分割线**************</view>
-<view class="title">读取数据库：</view>
+<view class="split-line">**************分割线**************</view> -->
+<view class="title">读取数据库(增删改查)：</view>
+<picker class="picker" mode="selector" range="{{queryWayList}}" range-key="name" bindchange="handleTypePick">
+    <view class='val'>查找方式：<text>{{currentWayObj.name}}</text></view>
+</picker>
+<view class=''>
+    查询的值：
+    <input type="text" bindinput="handleQueryInput"/>
+</view>
+<view class='info-title'>信息如下:</view>
+<view class='userinfo-wrap' wx:for="{{userList}}" wx:key="{{index}}">
+    <view>第<text>{{index+1}}</text>条：</view>
+    <view>名字：<text>{{item.name}}</text></view>
+    <view>年龄：<text>{{item.age}}</text></view>
+    <view>性别：<text>{{item.genre}}</text></view>
+</view>
 <button class="btn" bindtap="getData">获取用户数据</button>
