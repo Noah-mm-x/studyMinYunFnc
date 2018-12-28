@@ -16,3 +16,12 @@
     text-align: center;
     line-height: 92rpx;
 }
+.split-line{
+    margin-top: 40rpx;
+    margin-bottom: 40rpx;
+    text-align: center;
+}
+.title{
+    font-size: 56rpx;
+    color: #222222;
+}

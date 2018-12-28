@@ -1,9 +1,13 @@
 <!--pages/index/index.wxml-->
+<view class="title">计算两者之和：</view>
 <view class="cal-wrap clearfix">
     <input class="input" type="number" value="{{num1}}" bindinput="handleInput1"/>
     <input class="input" type="number" value="{{num2}}" bindinput="handleInput2"/>
 </view>
 <view class="sum">两者之和是：{{sum}}</view>
 
-<button class="btn" bindtap="getData">点击计算两者之和</button>
+<button class="btn" bindtap="handleCal">点击计算两者之和</button>
 
+<view class="split-line">**************分割线**************</view>
+<view class="title">读取数据库：</view>
+<button class="btn" bindtap="getData">获取用户数据</button>
