@@ -165,7 +165,8 @@ Page({
                 genre: genre
             },
             success(res) {
-                if(res.code != 0){
+                console.log('res',res);
+                if(res.code == 0){
                     wx.showToast({
                         none: 'none',
                         title: "插入成功"
@@ -173,7 +174,7 @@ Page({
                 }else{
                     wx.showToast({
                         none: 'none',
-                        title: "插入异常"
+                        title: res.result.msg
                     });
                 }
             },
