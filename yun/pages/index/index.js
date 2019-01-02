@@ -33,6 +33,9 @@ Page({
         updateObj:{
             name: '',
             age: ''
+        },
+        removeObj:{
+            name: ''
         }
     },
     onShow() {
@@ -173,7 +176,7 @@ Page({
             },
             success(res) {
                 console.log("res", res);
-                if (res.code == 0) {
+                if (res.code == 1) {
                     wx.showToast({
                         none: "none",
                         title: "插入成功"
@@ -221,10 +224,49 @@ Page({
             },
             success(res) {
                 console.log("res", res);
-                if (res.code == 0) {
+                if (res.code == 1) {
                     wx.showToast({
                         none: "none",
                         title: "更新成功"
+                    });
+                } else {
+                    wx.showToast({
+                        none: "none",
+                        title: res.result.msg
+                    });
+                }
+            },
+            fail(err) {
+                console.log(err);
+            }
+        });
+    },
+    removeData(){
+        const removeObj = this.data.removeObj;
+        const name = removeObj.name;
+        if (!name) {
+            wx.showToast({
+                title: "名字不能为空",
+                icon: "none"
+            });
+            return false;
+        }
+        const self = this;
+        wx.showToast({
+            none: "none",
+            title: "正在删除"
+        });
+        wx.cloud.callFunction({
+            name: "users",
+            data: {
+                name: name
+            },
+            success(res) {
+                console.log("res", res);
+                if (res.code == 1) {
+                    wx.showToast({
+                        none: "none",
+                        title: "删除成功"
                     });
                 } else {
                     wx.showToast({

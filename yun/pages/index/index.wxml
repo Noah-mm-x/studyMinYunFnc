@@ -54,3 +54,12 @@
     <input class="input" type="text" value="{{updateObj.age}}" data-name="updateObj.age"  bindinput="handleInput"/>
 </view>
 <button class="btn" bindtap="updateData">更新用户数据</button>
+
+<view class="split-line">**************分割线**************</view>
+
+<view class='info-title'>删除数据：</view>
+<view class='input-wrap clearfix'>
+    <view class='name'>名字：</view>
+    <input class="input" type="text" value="{{removeObj.name}}" data-name="removeObj.name"  bindinput="handleInput" />
+</view>
+<button class="btn" bindtap="removeData">删除用户数据</button>
