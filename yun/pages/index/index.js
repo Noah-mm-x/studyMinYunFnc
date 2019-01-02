@@ -53,53 +53,10 @@ Page({
                 b: self.data.num2
             },
             success(res) {
-                console.log(res);
                 wx.hideToast({});
                 self.setData({
                     sum: res.result.sum
                 });
-            },
-            fail(err) {
-                console.log(err);
-            }
-        });
-    },
-    getData() {
-        const queryVal = this.data.queryVal;
-        this.setData({
-            userList: []
-        });
-        if (!queryVal) {
-            wx.showToast({
-                title: "不能为空",
-                icon: "none"
-            });
-            return false;
-        }
-        const self = this;
-        wx.showToast({
-            none: "none",
-            title: "正在查询"
-        });
-        wx.cloud.callFunction({
-            name: "users",
-            data: {
-                param: self.data.currentWayObj.param,
-                val: queryVal
-            },
-            success(res) {
-                const data = res.result.data;
-                if (!data || !data.length) {
-                    wx.showToast({
-                        none: "none",
-                        title: "暂无数据"
-                    });
-                } else {
-                    self.setData({
-                        userList: res.result.data
-                    });
-                }
-                console.log(111, res.result.data);
             },
             fail(err) {
                 console.log(err);
@@ -136,6 +93,47 @@ Page({
             [type]: e.detail.value
         });
     },
+    getData() {
+        const queryVal = this.data.queryVal;
+        this.setData({
+            userList: []
+        });
+        if (!queryVal) {
+            wx.showToast({
+                title: "不能为空",
+                icon: "none"
+            });
+            return false;
+        }
+        const self = this;
+        wx.showToast({
+            none: "none",
+            title: "正在查询"
+        });
+        wx.cloud.callFunction({
+            name: "queryUser",
+            data: {
+                param: self.data.currentWayObj.param,
+                val: queryVal
+            },
+            success(res) {
+                const data = res.result.data;
+                if (!data || !data.length) {
+                    wx.showToast({
+                        none: "none",
+                        title: "暂无数据"
+                    });
+                } else {
+                    self.setData({
+                        userList: res.result.data
+                    });
+                }
+            },
+            fail(err) {
+                console.log(err);
+            }
+        });
+    },
     addData() {
         const addObj = this.data.addObj;
         const name = addObj.name;
@@ -168,14 +166,13 @@ Page({
             title: "正在插入"
         });
         wx.cloud.callFunction({
-            name: "users",
+            name: "addUser",
             data: {
                 name: name,
                 age: age,
                 genre: genre
             },
             success(res) {
-                console.log("res", res);
                 if (res.code == 1) {
                     wx.showToast({
                         none: "none",
@@ -217,13 +214,12 @@ Page({
             title: "正在更新"
         });
         wx.cloud.callFunction({
-            name: "users",
+            name: "updateUser",
             data: {
                 name: name,
                 age: age
             },
             success(res) {
-                console.log("res", res);
                 if (res.code == 1) {
                     wx.showToast({
                         none: "none",
@@ -257,12 +253,11 @@ Page({
             title: "正在删除"
         });
         wx.cloud.callFunction({
-            name: "users",
+            name: "removeUser",
             data: {
                 name: name
             },
             success(res) {
-                console.log("res", res);
                 if (res.code == 1) {
                     wx.showToast({
                         none: "none",
