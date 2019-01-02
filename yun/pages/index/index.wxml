@@ -8,6 +8,7 @@
 
 <view class="split-line">**************分割线**************</view> -->
 <view class="title">读取数据库(增删改查)：</view>
+<view class='info-title'>查找数据：</view>
 <picker class="picker" mode="selector" range="{{queryWayList}}" range-key="name" bindchange="handleTypePick">
     <view class='val'>查找方式：<text>{{currentWayObj.name}}</text></view>
 </picker>
@@ -23,18 +24,33 @@
     <view>性别：<text>{{item.genre}}</text></view>
 </view>
 <button class="btn" bindtap="getData">获取用户数据</button>
+
 <view class="split-line">**************分割线**************</view>
+
 <view class='info-title'>插入数据：</view>
 <view class='input-wrap clearfix'>
     <view class='name'>名字：</view>
-    <input class="input" type="text" value="{{name}}" data-name="name"  bindinput="handleInput" />
+    <input class="input" type="text" value="{{addObj.name}}" data-name="addObj.name"  bindinput="handleInput" />
 </view>
 <view class='input-wrap clearfix'>
     <view class='name'>年龄：</view>
-    <input class="input" type="text" value="{{age}}" data-name="age"  bindinput="handleInput"/>
+    <input class="input" type="text" value="{{addObj.age}}" data-name="addObj.age"  bindinput="handleInput"/>
 </view>
 <view class='input-wrap clearfix'>
     <view class='name'>性别：</view>
-    <input class="input" type="text" value="{{genre}}" data-name="genre"  bindinput="handleInput"/>
+    <input class="input" type="text" value="{{addObj.genre}}" data-name="addObj.genre"  bindinput="handleInput"/>
 </view>
 <button class="btn" bindtap="addData">插入用户数据</button>
+
+<view class="split-line">**************分割线**************</view>
+
+<view class='info-title'>更新数据：</view>
+<view class='input-wrap clearfix'>
+    <view class='name'>名字：</view>
+    <input class="input" type="text" value="{{updateObj.name}}" data-name="updateObj.name"  bindinput="handleInput" />
+</view>
+<view class='input-wrap clearfix'>
+    <view class='name'>年龄：</view>
+    <input class="input" type="text" value="{{updateObj.age}}" data-name="updateObj.age"  bindinput="handleInput"/>
+</view>
+<button class="btn" bindtap="updateData">更新用户数据</button>

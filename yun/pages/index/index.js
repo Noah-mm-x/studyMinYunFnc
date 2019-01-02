@@ -25,9 +25,15 @@ Page({
         queryVal: "",
         resultList: [],
         userList: [],
-        name: '',
-        age: '',
-        genre: ''
+        addObj: {
+            name: "",
+            age: "",
+            genre: ""
+        },
+        updateObj:{
+            name: '',
+            age: ''
+        }
     },
     onShow() {
         wx.cloud.init();
@@ -59,7 +65,7 @@ Page({
         const queryVal = this.data.queryVal;
         this.setData({
             userList: []
-        })
+        });
         if (!queryVal) {
             wx.showToast({
                 title: "不能为空",
@@ -69,7 +75,7 @@ Page({
         }
         const self = this;
         wx.showToast({
-            none: 'none',
+            none: "none",
             title: "正在查询"
         });
         wx.cloud.callFunction({
@@ -82,7 +88,7 @@ Page({
                 const data = res.result.data;
                 if (!data || !data.length) {
                     wx.showToast({
-                        none: 'none',
+                        none: "none",
                         title: "暂无数据"
                     });
                 } else {
@@ -121,16 +127,17 @@ Page({
             queryVal: e.detail.value
         });
     },
-    handleInput(e){
-        const type = e.currentTarget.dataset.name
+    handleInput(e) {
+        const type = e.currentTarget.dataset.name;
         this.setData({
             [type]: e.detail.value
-        })
+        });
     },
-    addData(){
-        const name = this.data.name;
-        const age = this.data.age;
-        const genre= this.data.genre;
+    addData() {
+        const addObj = this.data.addObj;
+        const name = addObj.name;
+        const age = addObj.age;
+        const genre = addObj.genre;
         if (!name) {
             wx.showToast({
                 title: "名字不能为空",
@@ -154,7 +161,7 @@ Page({
         }
         const self = this;
         wx.showToast({
-            none: 'none',
+            none: "none",
             title: "正在插入"
         });
         wx.cloud.callFunction({
@@ -165,15 +172,63 @@ Page({
                 genre: genre
             },
             success(res) {
-                console.log('res',res);
-                if(res.code == 0){
+                console.log("res", res);
+                if (res.code == 0) {
                     wx.showToast({
-                        none: 'none',
+                        none: "none",
                         title: "插入成功"
                     });
-                }else{
+                } else {
                     wx.showToast({
-                        none: 'none',
+                        none: "none",
+                        title: res.result.msg
+                    });
+                }
+            },
+            fail(err) {
+                console.log(err);
+            }
+        });
+    },
+    updateData(){
+        const updateObj = this.data.updateObj;
+        const name = updateObj.name;
+        const age = updateObj.age;
+        if (!name) {
+            wx.showToast({
+                title: "名字不能为空",
+                icon: "none"
+            });
+            return false;
+        }
+        if (!age) {
+            wx.showToast({
+                title: "年龄不能为空",
+                icon: "none"
+            });
+            return false;
+        }
+        const self = this;
+        wx.showToast({
+            none: "none",
+            title: "正在更新"
+        });
+        wx.cloud.callFunction({
+            name: "users",
+            data: {
+                name: name,
+                age: age
+            },
+            success(res) {
+                console.log("res", res);
+                if (res.code == 0) {
+                    wx.showToast({
+                        none: "none",
+                        title: "更新成功"
+                    });
+                } else {
+                    wx.showToast({
+                        none: "none",
                         title: res.result.msg
                     });
                 }
@@ -183,4 +238,4 @@ Page({
             }
         });
     }
-}); 
+});
